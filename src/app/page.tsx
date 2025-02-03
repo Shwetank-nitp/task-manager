@@ -21,7 +21,7 @@ export default async function Page() {
     }
 
     const data = await res.json();
-    const tasks = data.data; // Assuming the response structure is { data: [] }
+    const tasks = data.data;
 
     return (
       <div className="bg-slate-200 min-h-screen">
