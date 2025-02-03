@@ -7,7 +7,6 @@ export default async function Page() {
   noStore();
 
   try {
-    // Use native fetch instead of axios
     const res = await fetch(`${process.env.BASE_URL}/api/task/getAll`, {
       headers: {
         "Cache-Control": "no-cache",
