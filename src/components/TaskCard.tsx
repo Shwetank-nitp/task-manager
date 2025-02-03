@@ -1,7 +1,7 @@
 "use client";
 
 import { Tasks } from "@/lib/types/tasks";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Checkbox } from "./ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { Pencil, Trash2 } from "lucide-react";
@@ -12,8 +12,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useTasks } from "@/lib/context/useTasks";
 import { format } from "date-fns";
 
-interface TaskCardProps extends Tasks {}
-
 export default function TaskCard({
   _id,
   title,
@@ -21,7 +19,7 @@ export default function TaskCard({
   status,
   due,
   createdAt,
-}: TaskCardProps) {
+}: Tasks) {
   const { editing, setEditing, setId } = useEditing();
   const { setTasks } = useTasks();
   const { toast } = useToast();
@@ -46,7 +44,7 @@ export default function TaskCard({
         description: "Task was successfully deleted",
         variant: "default",
       });
-    } catch (error) {
+    } catch {
       toast({
         title: "Deletion Failed",
         description: "Error while deleting the task, please try again later",

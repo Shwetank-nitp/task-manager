@@ -9,7 +9,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import axios, { AxiosError } from "axios";
 import { useEditing } from "@/lib/context/useEditing";
 
