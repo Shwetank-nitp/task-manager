@@ -4,14 +4,8 @@ import axios from "axios";
 
 export default async function Page() {
   try {
-    const res = await axios.get(`${process.env.BASE_URL}/api/task/getAll`, {
-      headers: {
-        "Cache-Control":
-          "no-store, no-cache, must-revalidate, proxy-revalidate",
-        Pragma: "no-cache",
-        Expires: "0",
-      },
-    });
+    const res = await axios.get(`${process.env.BASE_URL}/api/task/getAll`);
+    console.log(res);
 
     const tasks = res.data.data; // data = []
     console.log(process.env.BASE_URL);
