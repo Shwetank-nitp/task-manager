@@ -14,8 +14,8 @@ This is a Task Manager configured with MongoDB for data storage. It includes ess
 ### 1️⃣ Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone [https://github.com/your-username/your-repo.git](https://github.com/Shwetank-nitp/task-manager.git)
+cd task-manager
 ```
 
 ### 2️⃣ Install Dependencies
