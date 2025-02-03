@@ -154,11 +154,14 @@ function FormWrapper({
   control,
 }: {
   loading: boolean;
+  // eslint-disable-next-line
   handleSubmit: any;
+  // eslint-disable-next-line
   errors: any;
   submitText: string;
   loadingText: string;
   onCancel?: () => void;
+  // eslint-disable-next-line
   control: any;
 }) {
   return (
@@ -237,6 +240,7 @@ function FormWrapper({
   );
 }
 
+// eslint-disable-next-line
 function handleError(error: unknown, action: "create" | "update", toast: any) {
   const message =
     error instanceof AxiosError
