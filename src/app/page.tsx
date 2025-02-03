@@ -4,12 +4,14 @@ import axios from "axios";
 
 export default async function Page() {
   try {
-    const res = await axios.get(`${process.env.BASE_URL}/api/task/getAll`);
-    console.log(res);
-
+    const res = await axios.get(`${process.env.BASE_URL}/api/task/getAll`, {
+      headers: {
+        "Cache-Control": "no-cache",
+        Pragma: "no-cache",
+        Expires: "0",
+      },
+    });
     const tasks = res.data.data; // data = []
-    console.log(process.env.BASE_URL);
-    console.log(process.env.MONGO_URI);
     return (
       <div className="bg-slate-200 min-h-screen">
         <div className="lg:px-36 md:px-15 px-4 md:py-10 py-6 flex flex-col gap-4">
