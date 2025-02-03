@@ -1,17 +1,28 @@
 import { TaskManager } from "@/components/TaskMaanger";
 import { Toaster } from "@/components/ui/toaster";
-import axios from "axios";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function Page() {
+  // Opt out of caching for this page
+  noStore();
+
   try {
-    const res = await axios.get(`${process.env.BASE_URL}/api/task/getAll`, {
+    // Use native fetch instead of axios
+    const res = await fetch(`${process.env.BASE_URL}/api/task/getAll`, {
       headers: {
         "Cache-Control": "no-cache",
         Pragma: "no-cache",
         Expires: "0",
       },
     });
-    const tasks = res.data.data; // data = []
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch tasks");
+    }
+
+    const data = await res.json();
+    const tasks = data.data; // Assuming the response structure is { data: [] }
+
     return (
       <div className="bg-slate-200 min-h-screen">
         <div className="lg:px-36 md:px-15 px-4 md:py-10 py-6 flex flex-col gap-4">
@@ -31,7 +42,9 @@ export default async function Page() {
       </div>
     );
   } catch (error) {
-    console.log(error);
-    return <div>Server Error</div>;
+    console.error(error);
+    return (
+      <div>Server Error: Failed to load tasks. Please try again later.</div>
+    );
   }
 }
